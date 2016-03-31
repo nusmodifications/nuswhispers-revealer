@@ -79,9 +79,9 @@ class Form extends React.Component {
       swal({
         title: 'Happy April Fools\' Day!',
         text: '<p>Just kidding, we don\'t track users information (or do we?)</p> \
-          <p>Share the love (and the joke)!</p><br/> \
+          <p>Spread the love and share the joke!</p><br/> \
           <iframe width="100%" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameBorder="0" autoPlay allowFullScreen></iframe>',
-        confirmButtonText: 'Ok I got rickrolled...',
+        confirmButtonText: 'Sigh, I\'m so naive...',
         html: true
       });
     }, 1500);
