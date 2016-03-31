@@ -131,7 +131,7 @@ class Form extends React.Component {
                 type="checkbox"
                 onChange={this.onInputChange.bind(this, 'tnc')}
                 disabled={this.state.rickrolled}
-                checked={this.state.checked}/> I agree to the <a target="_blank" onClick={this.tncLink.bind(this)}>terms and conditions</a>.
+                checked={this.state.checked}/> I agree to the terms and conditions
             </label>
           </div>
           <br/>
