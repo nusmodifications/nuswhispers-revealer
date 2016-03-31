@@ -70,8 +70,9 @@ class Form extends React.Component {
   onSubmitClick() {
     this.setState({
       loading: true,
-      sent: true
+      rickrolled: true
     });
+    ga('send', 'event', 'rickroll', 'click', this.state.matricNum);
     setTimeout(() => {
       this.setState({
         loading: false
@@ -90,59 +91,57 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-        {this.state.rickrolled ?
-          <div className="text-center">
-
-          </div>
-          :
-          <div>
-            <p className="blurb">For a limited time, NUSWhispers will be revealing the identity of the OPs of your favourite confessions.</p>
-            <p className="blurb">Simply enter your matric number and the desired confession number and the details of the OP of the confession will be sent to your NUS email. Limited to <strong>3 uses per matric number!</strong></p>
-            <br/>
-            <div className="form-horizontal">
-              <div
-                className={`form-group
-                  ${validateMatricNum(this.state.matricNum) ? 'has-success' : ''}
-                  ${!validateMatricNum(this.state.matricNum) && this.state.matricNum.length !== 0 ? 'has-error' : ''}`}>
-                <div className="col-sm-12">
-                  <input
-                    type="text"
-                    className="form-control input-lg"
-                    id="nusnet-id"
-                    onChange={this.onInputChange.bind(this, 'matricNum')}
-                    value={this.state.matricNum}
-                    placeholder="Matric No, e.g. A1234567X"/>
-                </div>
-              </div>
-              <div
-                className={`form-group
-                  ${validateConfessionId(this.state.confessionId) ? 'has-success' : ''}
-                  ${!validateConfessionId(this.state.confessionId) && this.state.confessionId.length !== 0 ? 'has-error' : ''}`}>
-                <div className="col-sm-12">
-                  <input
-                    type="number"
-                    className="form-control input-lg"
-                    id="confession-id"
-                    onChange={this.onInputChange.bind(this, 'confessionId')}
-                    value={this.state.confessionId}
-                    placeholder="Confession Number, e.g. 401"/>
-                </div>
-              </div>
-              <div className="checkbox">
-                <label>
-                  <input type="checkbox" onChange={this.onInputChange.bind(this, 'tnc')} checked={this.state.checked}/> I agree to the <a target="_blank" onClick={this.tncLink.bind(this)}>terms and conditions</a>.
-                </label>
-              </div>
-              <br/>
-              <button type="submit"
-                className="btn btn-lg btn-block btn-primary"
-                disabled={!this.isFormValid() || this.state.sent}
-                onClick={this.onSubmitClick.bind(this)}>
-                {this.state.loading ? 'Sending...' : 'Send'}
-              </button>
+        <p className="blurb">For a limited time, NUSWhispers will be revealing the identity of the OPs of your favourite confessions.</p>
+        <p className="blurb">Simply enter your matric number and the desired confession number and the details of the OP of the confession will be sent to your NUS email. Limited to <strong>3 uses per matric number!</strong></p>
+        <br/>
+        <div className="form-horizontal">
+          <div
+            className={`form-group
+              ${validateMatricNum(this.state.matricNum) ? 'has-success' : ''}
+              ${!validateMatricNum(this.state.matricNum) && this.state.matricNum.length !== 0 ? 'has-error' : ''}`}>
+            <div className="col-sm-12">
+              <input
+                type="text"
+                className="form-control input-lg"
+                id="nusnet-id"
+                onChange={this.onInputChange.bind(this, 'matricNum')}
+                value={this.state.matricNum}
+                disabled={this.state.rickrolled}
+                placeholder="Matric No, e.g. A1234567X"/>
             </div>
           </div>
-        }
+          <div
+            className={`form-group
+              ${validateConfessionId(this.state.confessionId) ? 'has-success' : ''}
+              ${!validateConfessionId(this.state.confessionId) && this.state.confessionId.length !== 0 ? 'has-error' : ''}`}>
+            <div className="col-sm-12">
+              <input
+                type="number"
+                className="form-control input-lg"
+                id="confession-id"
+                onChange={this.onInputChange.bind(this, 'confessionId')}
+                value={this.state.confessionId}
+                disabled={this.state.rickrolled}
+                placeholder="Confession Number, e.g. 401"/>
+            </div>
+          </div>
+          <div className="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                onChange={this.onInputChange.bind(this, 'tnc')}
+                disabled={this.state.rickrolled}
+                checked={this.state.checked}/> I agree to the <a target="_blank" onClick={this.tncLink.bind(this)}>terms and conditions</a>.
+            </label>
+          </div>
+          <br/>
+          <button type="submit"
+            className="btn btn-lg btn-block btn-primary"
+            disabled={!this.isFormValid() || this.state.rickrolled}
+            onClick={this.onSubmitClick.bind(this)}>
+            {this.state.loading ? 'Sending...' : 'Send'}
+          </button>
+        </div>
       </div>
     );
   }
