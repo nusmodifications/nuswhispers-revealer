@@ -51,7 +51,7 @@
 }
 
 .banner-container {
-  max-width: 768px;
+  max-width: 600px;
 }
 
 .main-content {
@@ -61,4 +61,8 @@
 
 .blurb {
   font-size: 18px;
+}
+
+.fb-share-button {
+  float: right;
 }

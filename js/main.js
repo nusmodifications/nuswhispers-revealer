@@ -1,4 +1,4 @@
-function validateNUSNetId (id) {
+function validateMatricNum (id) {
   if (!id) {
     return;
   }
@@ -43,7 +43,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nusnetId: '',
+      matricNum: '',
       confessionId: '',
       tnc: false,
       rickrolled: false
@@ -57,7 +57,7 @@ class Form extends React.Component {
   }
 
   isFormValid() {
-    return validateNUSNetId(this.state.nusnetId) &&
+    return validateMatricNum(this.state.matricNum) &&
       validateConfessionId(this.state.confessionId) &&
       this.state.tnc;
   }
@@ -69,11 +69,19 @@ class Form extends React.Component {
 
   onSubmitClick() {
     this.setState({
-      loading: true
+      loading: true,
+      sent: true
     });
     setTimeout(() => {
       this.setState({
-        rickrolled: true
+        loading: false
+      });
+      swal({
+        title: 'Happy April Fools\' Day!',
+        text: '<p>Just kidding, we don\'t track users information (or do we?)</p> \
+          <p>Share the love (and the joke)!</p><br/> \
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameBorder="0" autoPlay allowFullScreen></iframe>',
+        html: true
       });
     }, 1500);
   }
@@ -83,29 +91,26 @@ class Form extends React.Component {
       <div>
         {this.state.rickrolled ?
           <div className="text-center">
-            <h3>Happy April Fool's Day!</h3>
-            <p>Just kidding, we don't track users information (or do we?)</p>
-            <p>Share the love (and the joke)!</p>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" autoplay allowfullscreen></iframe>
+
           </div>
           :
           <div>
-            <p class="blurb">For a limited time, NUSWhispers will be revealing the identity of the OPs of your favourite confessions.</p>
-            <p class="blurb">Simply enter your NUSNET ID and the desired confession number and the details of the OP of the confession will be sent to your NUS email. Limited to <strong>3 uses per NUSNET ID!</strong></p>
+            <p className="blurb">For a limited time, NUSWhispers will be revealing the identity of the OPs of your favourite confessions.</p>
+            <p className="blurb">Simply enter your matric number and the desired confession number and the details of the OP of the confession will be sent to your NUS email. Limited to <strong>3 uses per matric number!</strong></p>
             <br/>
             <div className="form-horizontal">
               <div
                 className={`form-group
-                  ${validateNUSNetId(this.state.nusnetId) ? 'has-success' : ''}
-                  ${!validateNUSNetId(this.state.nusnetId) && this.state.nusnetId.length !== 0 ? 'has-error' : ''}`}>
+                  ${validateMatricNum(this.state.matricNum) ? 'has-success' : ''}
+                  ${!validateMatricNum(this.state.matricNum) && this.state.matricNum.length !== 0 ? 'has-error' : ''}`}>
                 <div className="col-sm-12">
                   <input
                     type="text"
                     className="form-control input-lg"
                     id="nusnet-id"
-                    onChange={this.onInputChange.bind(this, 'nusnetId')}
-                    value={this.state.nusnetId}
-                    placeholder="NUSNET ID, e.g. A0132164"/>
+                    onChange={this.onInputChange.bind(this, 'matricNum')}
+                    value={this.state.matricNum}
+                    placeholder="Matric No, e.g. A1234567X"/>
                 </div>
               </div>
               <div
@@ -130,7 +135,7 @@ class Form extends React.Component {
               <br/>
               <button type="submit"
                 className="btn btn-lg btn-block btn-primary"
-                // disabled={!this.isFormValid()}
+                disabled={!this.isFormValid() || this.state.sent}
                 onClick={this.onSubmitClick.bind(this)}>
                 {this.state.loading ? 'Sending...' : 'Send'}
               </button>
