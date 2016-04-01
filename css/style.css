@@ -67,7 +67,9 @@
   float: right;
 }
 
-.sweet-alert {
-  width: 768px;
-  margin-left: -359px;
+@media (min-width: 540px) {
+  .sweet-alert {
+    width: 768px;
+    margin-left: -359px;
+  }
 }

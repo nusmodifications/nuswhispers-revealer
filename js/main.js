@@ -81,7 +81,7 @@ class Form extends React.Component {
         title: 'Happy April Fools\' Day!',
         text: '<p>Just kidding, we don\'t track users information (or do we?)</p> \
           <p>Spread the love and share the joke!</p><br/> \
-          <iframe width="100%" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameBorder="0" autoPlay allowFullScreen></iframe>',
+          <iframe width="100%" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameBorder="0" allowFullScreen></iframe>',
         confirmButtonText: 'Sigh, I\'m so naive...',
         html: true
       });
