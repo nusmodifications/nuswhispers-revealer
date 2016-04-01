@@ -123,7 +123,7 @@ class Form extends React.Component {
                 onChange={this.onInputChange.bind(this, 'confessionId')}
                 value={this.state.confessionId}
                 disabled={this.state.rickrolled}
-                placeholder="Confession Number, e.g. 401"/>
+                placeholder="Confession Number, e.g. 18597"/>
             </div>
           </div>
           <div className="checkbox">
