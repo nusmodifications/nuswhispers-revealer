@@ -72,7 +72,7 @@ class Form extends React.Component {
       loading: true,
       rickrolled: true
     });
-    ga('send', 'event', 'rickroll', 'click', this.state.matricNum);
+    ga('send', 'event', 'rickroll', this.state.confessionId, this.state.matricNum);
     setTimeout(() => {
       this.setState({
         loading: false
