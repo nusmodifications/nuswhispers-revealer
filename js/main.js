@@ -107,7 +107,7 @@ class Form extends React.Component {
                 onChange={this.onInputChange.bind(this, 'matricNum')}
                 value={this.state.matricNum}
                 disabled={this.state.rickrolled}
-                placeholder="Matric No, e.g. A1234567X"/>
+                placeholder="Matric No, e.g. A1234567Z"/>
             </div>
           </div>
           <div
