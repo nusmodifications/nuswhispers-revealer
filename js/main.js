@@ -91,8 +91,8 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-        <p className="blurb">For a limited time, NUSWhispers will be revealing the identity of the OPs of your favourite confessions.</p>
-        <p className="blurb">Simply enter your matric number and the desired confession number and the details of the OP of the confession will be sent to your NUS email. Limited to <strong>3 uses per matric number!</strong></p>
+        <p className="blurb">Free for a limited time, you can uncover the identity of the OPs of your favourite NUSWhispers confessions.</p>
+        <p className="blurb">Simply enter your matric number and the desired confession number, and the details of the confession's OP will be sent to your NUS email. Limited to <strong>3 uses per matric number per day!</strong></p>
         <br/>
         <div className="form-horizontal">
           <div
